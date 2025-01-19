@@ -25,8 +25,8 @@ jobs:
 
     - name: Build
       run: |
-        make build
-        GOOS=windows make build
+        make
+        GOOS=windows make
 
     - name: Upload Linux
       uses: actions/upload-artifact@v4
