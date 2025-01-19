@@ -13,6 +13,16 @@
 		},
 		"./local-features/gotools": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"github.vscode-github-actions",
+				"golang.go",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers"
+			]
+		}
 	}
 
 	// Configure tool-specific properties.
