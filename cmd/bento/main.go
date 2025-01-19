@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"runtime/debug"
+	"time"
 
 	"github.com/warpstreamlabs/bento/public/service"
 
@@ -21,7 +23,33 @@ var (
 	DateBuilt string
 	// BinaryName binary name.
 	BinaryName string = "bento"
+	Revision   string
+	LastCommit time.Time
+	DirtyBuild bool
 )
+
+func init() {
+	info, ok := debug.ReadBuildInfo()
+	if !ok {
+		return
+	}
+	if info.Main.Version != "" {
+		Version = info.Main.Version
+	}
+	for _, kv := range info.Settings {
+		if kv.Value == "" {
+			continue
+		}
+		switch kv.Key {
+		case "vcs.revision":
+			Revision = kv.Value
+		case "vcs.time":
+			LastCommit, _ = time.Parse(time.RFC3339, kv.Value)
+		case "vcs.modified":
+			DirtyBuild = kv.Value == "true"
+		}
+	}
+}
 
 func main() {
 	service.RunCLI(

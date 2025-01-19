@@ -2,8 +2,6 @@ module github.com/kmpm/beto-custom
 
 go 1.22.0
 
-toolchain go1.23.4
-
 require github.com/warpstreamlabs/bento v1.4.1
 
 require (

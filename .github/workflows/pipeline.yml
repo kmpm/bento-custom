@@ -1,0 +1,44 @@
+name: Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+
+    - name: Check code
+      run: make tidy audit no-dirty
+
+    - name: Build
+      run: |
+        make
+        GOOS=windows make
+
+    - name: Upload Linux
+      uses: actions/upload-artifact@v4
+      with:
+        name: bento-linux-amd64
+        path: target/linux-amd64
+
+    - name: Upload Windows
+      uses: actions/upload-artifact@v4
+      with:
+        name: bento-windows-amd64
+        path: target/windows-amd64
+    # - name: Build the docker image
+    #   run: make no-dirty docker
+
