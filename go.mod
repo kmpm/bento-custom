@@ -120,4 +120,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/warpstreamlabs/bento => github.com/kmpm/bento v0.0.0-20250119112218-e6c3c460d043
+replace github.com/warpstreamlabs/bento => github.com/kmpm/bento v0.0.0-20250119142051-e566381ade68
