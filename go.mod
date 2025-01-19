@@ -1,4 +1,4 @@
-module github.com/kmpm/beto-custom
+module github.com/kmpm/bento-custom
 
 go 1.22.0
 
