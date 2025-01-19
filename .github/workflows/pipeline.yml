@@ -39,6 +39,6 @@ jobs:
       with:
         name: bento-windows-amd64
         path: target/windows-amd64
-    # - name: Build the docker image
-    #   run: make no-dirty docker
 
+    - name: Build a docker image (not published)
+      run: make docker
