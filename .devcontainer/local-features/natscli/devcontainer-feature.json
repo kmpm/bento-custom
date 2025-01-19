@@ -1,0 +1,12 @@
+{
+    "id": "local-features-natscli",
+    "version": "0.0.1",
+    "options": {
+        "cliVersion": {
+            "description": "The version of the NATS CLI to install.",
+            "type": "string",
+            "default": "latest",
+            "proposals": ["latest"]
+        }
+    }
+}
