@@ -13,7 +13,7 @@ RUN go mod download
 COPY . /go/src/github.com/kmpm/bento-custom/
 # Tag timetzdata required for busybox base image:
 # https://github.com/warpstreamlabs/bento/issues/897
-RUN make TAGS="timetzdata"
+RUN make TAGS="timetzdata" && ls -lah target
 
 # Pack
 FROM busybox AS package
@@ -25,7 +25,7 @@ WORKDIR /
 
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build /etc/passwd /etc/passwd
-COPY --from=build /go/src/github.com/kmpm/bento-custom/target/bin/bento .
+COPY --from=build /go/src/github.com/kmpm/bento-custom/target/bento .
 COPY ./resources/config/docker.yml /bento.yml
 
 USER bento

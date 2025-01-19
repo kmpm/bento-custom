@@ -24,7 +24,7 @@ SUFFIX = $(GOEXE)
 LD_FLAGS   ?= -w -s
 GO_FLAGS   ?=
 
-SOURCE_FILES = $(shell find cmd -type f) go.mod go.sum
+SOURCE_FILES = $(shell find cmd -type f) go.mod go.sum Makefile
 
 .PHONY: all
 all: $(APPS) $(EXTRAS)
@@ -37,6 +37,7 @@ $(EXTRAS): %: $(PATHINSTEXTRAS)/%
 
 $(PATHINSTBIN)/%: $(SOURCE_FILES)
 	go build $(GO_FLAGS) -tags "$(TAGS)" -ldflags "$(LD_FLAGS) $(VER_FLAGS)" -o $@ ./cmd/$(subst $(SUFFIX),,$*)
+	cp $@ $(DEST_DIR)/
 
 
 $(PATHINSTEXTRAS)/%:
