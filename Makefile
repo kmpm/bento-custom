@@ -37,8 +37,8 @@ SOURCE_FILES = $(shell find cmd -type f) go.mod go.sum
 
 .PHONY: tidy
 tidy:
-	go fmt ./... 
 	@go mod tidy -v
+	go fmt ./... 
 
 .PHONY: audit
 audit:

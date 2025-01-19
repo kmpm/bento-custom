@@ -25,7 +25,7 @@ WORKDIR /
 
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build /etc/passwd /etc/passwd
-COPY --from=build /go/src/github.com/warpstreamlabs/bento/target/bin/bento .
+COPY --from=build /go/src/github.com/kmpm/bento-custom/target/bin/bento .
 COPY ./resources/config/docker.yml /bento.yml
 
 USER bento
