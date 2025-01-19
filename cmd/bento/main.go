@@ -8,12 +8,8 @@ import (
 	"github.com/warpstreamlabs/bento/public/service"
 
 	// Import all plugins defined within the repo.
-	_ "github.com/warpstreamlabs/bento/public/components/io"
-	_ "github.com/warpstreamlabs/bento/public/components/nats"
-	_ "github.com/warpstreamlabs/bento/public/components/prometheus"
-	_ "github.com/warpstreamlabs/bento/public/components/pure"
-	_ "github.com/warpstreamlabs/bento/public/components/pure/extended"
-	_ "github.com/warpstreamlabs/bento/public/components/zmq4n"
+	_ "github.com/kmpm/bento-custom/public/components/common"
+	_ "github.com/kmpm/bento-custom/public/components/msgstream"
 )
 
 var (
