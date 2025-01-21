@@ -6,6 +6,8 @@ GOARCH             = $(shell go env GOARCH)
 PATHINSTBIN        = $(DEST_DIR)/$(GOOS)-$(GOARCH)/bin
 PATHINSTEXTRAS	   = $(DEST_DIR)/$(GOOS)-$(GOARCH)
 DOCKER_IMAGE       ?= ghcr.io/kmpm/bento-custom
+COMMIT			   ?= a9b6a55e4b655429bda68ee7da7947bb865502f0
+
 
 # version stuff
 VERSION     :=$(shell git describe --tags --always --dirty || echo "v0.0.0")
@@ -15,6 +17,9 @@ MAJOR       :=$(subst v,,$(call word-dot,$(VERSION),1))
 MINOR       :=$(call word-dot,$(VERSION),2)
 REVISION    :=$(call word-dash,$(call word-dot,$(VERSION),3),1)
 PATCH       :=$(call word-dash,$(VERSION),2)
+DATE        := $(shell date +"%Y-%m-%dT%H:%M:%SZ")
+
+VER_FLAGS = -X main.Version=$(VERSION) -X main.DateBuilt=$(DATE)
 
 # all folders in cmd
 APPS = $(filter %,$(shell cd cmd; find * -type d -exec basename {} \;))
@@ -79,3 +84,9 @@ audit:
 .PHONY: no-dirty
 no-dirty:
 	git diff --exit-code
+
+
+.PHONY: replace
+replace: 
+	go mod edit -replace github.com/warpstreamlabs/bento=github.com/kmpm/bento@$(COMMIT)
+	go mod tidy

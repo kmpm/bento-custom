@@ -76,6 +76,7 @@ require (
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/parquet-go/parquet-go v0.23.0 // indirect
+	github.com/pebbe/zmq4 v1.2.11 // indirect
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
 	github.com/prometheus/client_golang v1.18.0 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
@@ -120,4 +121,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/warpstreamlabs/bento => github.com/kmpm/bento v0.0.0-20250119142051-e566381ade68
+replace github.com/warpstreamlabs/bento => github.com/kmpm/bento v0.0.0-20250121180832-a9b6a55e4b65
