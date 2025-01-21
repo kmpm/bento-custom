@@ -14,6 +14,7 @@
 		"./local-features/gotools": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
+	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -23,13 +24,11 @@
 				"ms-vscode-remote.remote-containers"
 			]
 		}
-	}
+	},
 
-	// Configure tool-specific properties.
-	// "customizations": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [4222, 8222],
+	"forwardPorts": ["prom:9090",8222,4222]
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "echo 'command'"

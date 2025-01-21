@@ -20,10 +20,26 @@ services:
       context: services/nats
       dockerfile: Dockerfile
     restart: unless-stopped
+    ports:
+      - "4222:4222"
+      - "8222:8222"
     volumes:      
       - nats-data:/data
     # env_file:
     #   - ../secrets.env
+
+  prom:
+    build:
+      context: services/prom
+      dockerfile: Dockerfile
+    restart: unless-stopped 
+    ports:
+      - "9090:9090"
+    environment:
+      - REVISION=1
+
+  pushgw:
+    image: prom/pushgateway
 
 volumes:
   nats-data:
